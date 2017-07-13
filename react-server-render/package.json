@@ -1,5 +1,5 @@
 {
-  "name": "react-router",
+  "name": "react-server-render",
   "version": "1.0.0",
   "description": "",
   "main": "entry.js",
@@ -23,6 +23,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.1",
-    "minrouter": "^1.0.0-beta.2"
+    "minrouter": "^1.0.0-beta.2",
+    "redux": "^3.7.2"
   }
 }

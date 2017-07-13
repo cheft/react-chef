@@ -21,7 +21,7 @@ export default class Home extends Component {
     return (
       <div>
         <h1>Home</h1>
-        <div style={{color: 'red'}}>{this.state.time}</div>
+        <div style={{color: '#D2060C'}}>{this.state.time}</div>
         <HelloMessage name="cheft" />
       </div>
     )
