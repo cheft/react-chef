@@ -1,22 +1,55 @@
-import React, { Component } from 'react'
+import startApp from './minrouter'
 import ReactDOM from 'react-dom'
+import React, { Component } from 'react'
 
-import 'react-hot-loader/patch'
-import { AppContainer } from 'react-hot-loader'
+// startApp()
 
-import Router from './minrouter'
+// if (module.hot) {
+//   module.hot.accept('./minrouter', () => {
+//     startApp()
+//   })
+// }
 
-const render = Component => {
+import configureStore from './configureStore'
+import { Provider, connect } from 'react-redux'
+import Test from './pages/test'
+
+const store = configureStore()
+
+
+// Map Redux state to component props
+function mapStateToProps(state) {
+  return {
+    value: state
+  }
+}
+
+// Map Redux actions to component props
+function mapDispatchToProps(dispatch) {
+  return {
+    increment: () => dispatch({ type: 'INCREMENT' }),
+    decrement: () => dispatch({ type: 'DECREMENT' })
+  }
+}
+
+var App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Test)
+
+var render = function() {
   ReactDOM.render(
-    <AppContainer>
-      <Component/>
-    </AppContainer>,
+    <Provider store={store}>
+      <App/>
+    </Provider>,
     document.getElementById('app')
   )
 }
 
-render(Router)
+render()
 
 if (module.hot) {
-  module.hot.accept('./minrouter', () => { render(Router) })
+  module.hot.accept('./pages/test', () => {
+    render()
+  })
 }

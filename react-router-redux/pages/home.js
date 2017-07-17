@@ -22,7 +22,7 @@ export default class Home extends Component {
       <div>
         <h1>Home</h1>
         <div style={{color: '#D2060C'}}>{this.state.time}</div>
-        <HelloMessage name="cheft" />
+        <HelloMessage />
       </div>
     )
   }
