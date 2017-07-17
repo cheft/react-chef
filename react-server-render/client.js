@@ -5,7 +5,7 @@ import router  from './router'
 
 function render(content, req) {
   ReactDOM.render(
-    <Page content={content} pathname={req.pathname} router={router}/>,
+    <Page content={content} path={req.path} router={router}/>,
     document.getElementById('app')
   )
 }
