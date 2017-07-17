@@ -29,4 +29,6 @@ app.use(router)
 
 middleware.hot.publish({ action: 'reload' })
 
-app.listen(3000)
+app.listen(8080, function(err) {
+  console.log('Web started at port 8080!')
+})

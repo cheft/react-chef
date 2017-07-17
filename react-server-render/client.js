@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import Page from './pages/page'
 import router  from './router'
 
-var render = function(content, req, router) {
+function render(content, req) {
   ReactDOM.render(
     <Page content={content} path={req.path} router={router}/>,
     document.getElementById('app')
@@ -15,19 +15,19 @@ router.addResMethod('view', function (cname, req) {
     case 'about':
       require.ensure([], function(require) {
         const About = require('./pages/about').default
-        render(<About />, req, router)
+        render(<About req={req} />, req)
       })
       break
     case 'topic':
       require.ensure([], function(require) {
         const Topic = require('./pages/topic').default
-        render(<Topic params={req.params} />, req, router)
+        render(<Topic req={req} />, req)
       })
       break
     default:
       require.ensure([], function(require) {
         const Home = require('./pages/home').default
-        render(<Home />, req, router)
+        render(<Home req={req} />, req)
       })
       break
   }
@@ -36,5 +36,5 @@ router.addResMethod('view', function (cname, req) {
 router()
 
 if (module.hot) {
-  module.hot.accept('./minrouter', () => { router() })
+  module.hot.accept(() => { router() })
 }

@@ -4,8 +4,8 @@
   "description": "",
   "main": "entry.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --history-api-fallback --open",
-    "dev": ""
+    "client": "webpack-dev-server --hot --history-api-fallback --open",
+    "server": "node-dev server.js"
   },
   "author": "",
   "license": "ISC",

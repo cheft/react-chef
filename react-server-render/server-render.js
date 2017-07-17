@@ -8,12 +8,10 @@ import Topic from './pages/topic'
 
 module.exports = function (component, req, router) {
   let html = ''
-  switch (component) {
-    case 'about':
-      return renderToString(<Page content={<About/>} path={req.path} router={router}/>)
-    case 'topic':
-      return renderToString(<Page content={<Topic params={req.params}/>} path={req.path} router={router}/>)
-    default:
-      return renderToString(<Page content={<Home/>} path={req.path} router={router}/>)
+  var components = {
+    home: <Home req={req} />,
+    about: <About req={req} />,
+    topic: <Topic req={req} />,
   }
+  return renderToString(<Page content={components[component]} path={req.path} router={router}/>)
 }
