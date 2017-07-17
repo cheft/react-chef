@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import Page from './pages/page'
 
 // 以下路由代码可兼容 node，可为 node 中间件
 import router from 'minrouter'
-import Page from './pages/page'
 
 router.get('/', function(req, res) {
   res.view('home', req.params)
