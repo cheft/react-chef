@@ -13,5 +13,5 @@ module.exports = function (component, req, router) {
     about: <About req={req} />,
     topic: <Topic req={req} />,
   }
-  return renderToString(<Page content={components[component]} path={req.path} router={router}/>)
+  return renderToString(<Page content={components[component]} pathname={req.pathname} router={router}/>)
 }
