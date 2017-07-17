@@ -4,7 +4,8 @@
   "description": "",
   "main": "entry.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --history-api-fallback --open"
+    "start": "webpack-dev-server --hot --history-api-fallback --open",
+    "dev": ""
   },
   "author": "",
   "license": "ISC",
@@ -14,16 +15,17 @@
     "babel-preset-env": "^1.5.2",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
     "bundle-loader": "^0.5.5",
+    "koa-webpack": "^0.6.0",
     "react-hot-loader": "^3.0.0-beta.7",
-    "webpack": "^3.0.0",
+    "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1"
   },
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.1",
+    "koa": "^2.3.0",
     "minrouter": "^1.0.0-beta.2",
-    "redux": "^3.7.2"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }
