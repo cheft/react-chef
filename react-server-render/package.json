@@ -4,8 +4,9 @@
   "description": "",
   "main": "entry.js",
   "scripts": {
-    "client": "webpack-dev-server --hot --history-api-fallback --open",
-    "server": "node-dev server.js"
+    "start": "npm run dev",
+    "dev": "node server",
+    "client": "webpack-dev-server --hot --history-api-fallback --open"
   },
   "author": "",
   "license": "ISC",
@@ -15,12 +16,20 @@
     "babel-preset-env": "^1.5.2",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
     "bundle-loader": "^0.5.5",
+    "chokidar": "^1.7.0",
     "koa-webpack": "^0.6.0",
+    "koa-webpack-dev-middleware": "^2.0.0",
+    "koa-webpack-hot-middleware": "^1.0.3",
+    "koa-webpack-middleware": "^1.0.5",
     "react-hot-loader": "^3.0.0-beta.7",
     "webpack": "^3.3.0",
-    "webpack-dev-server": "^2.5.1"
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-dev-server": "^2.5.1",
+    "webpack-hot-middleware": "^2.18.2"
   },
   "dependencies": {
     "koa": "^2.3.0",

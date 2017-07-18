@@ -1,10 +1,10 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 
-import Page from './pages/page'
-import Home from './pages/home'
-import About from './pages/about'
-import Topic from './pages/topic'
+import Page from '../universal/pages/page'
+import Home from '../universal/pages/home'
+import About from '../universal/pages/about'
+import Topic from '../universal/pages/topic'
 
 module.exports = function (component, req, router) {
   let html = ''

@@ -1,12 +1,14 @@
 //react v16 npm i react@next react-dom@next --save
 var path = require('path')
 var webpack = require('webpack')
+process.env.NODE_ENV = 'development'
 
 module.exports = {
   entry: {
     client: [
-      'react-hot-loader/patch',
-      './client.js'
+      // 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+      'webpack-hot-middleware/client',
+      './client/index.js'
     ]
   },
   output: {
@@ -19,8 +21,15 @@ module.exports = {
   module: {
     rules: [{
       test: /\.js|jsx$/,
-      use: ['babel-loader'],
-      exclude: /node_modules/
+      loader: 'babel-loader',
+      exclude: /node_modules/,
+      options: {
+        presets: ['react-hmre']
+      }
     }]
-  }
+  },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ]
 }
