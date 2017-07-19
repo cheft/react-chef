@@ -45,6 +45,10 @@ app.use(function(ctx, next) {
 
 app.use(require('./router'))
 
+app.use(function(ctx) {
+  ctx.body = '404'
+})
+
 var server = require('http').createServer(app.callback())
 var watcher = chokidar.watch([
   path.join(__dirname, '../server'),

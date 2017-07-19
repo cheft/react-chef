@@ -8,7 +8,7 @@ router.get('/about', function(req, res) {
   res.render('about', req)
 })
 
-router.get('/topics-:id', function(req, res) {
+router.get('/topics/:id', function(req, res) {
   res.render('topic', req)
 })
 

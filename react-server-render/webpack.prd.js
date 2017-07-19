@@ -10,7 +10,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '/public'),
-    filename: '[name]-[hash:8].js'
+    filename: '[name]-[hash:8].js',
+    publicPath: '/'
   },
   resolve: {
     extensions: [".js", ".jsx"]
