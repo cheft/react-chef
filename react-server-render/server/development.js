@@ -44,6 +44,7 @@ app.use(function(ctx, next) {
 })
 
 app.use(require('./router'))
+app.use(require('./controllers').routes())
 
 app.use(function(ctx) {
   ctx.body = '404'
