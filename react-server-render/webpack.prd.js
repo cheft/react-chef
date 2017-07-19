@@ -5,14 +5,12 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     client: [
-      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=300',
-      // 'webpack-hot-middleware/client',
       './client/index.js'
     ]
   },
   output: {
     path: path.join(__dirname, '/public'),
-    filename: '[name].js'
+    filename: '[name]-[hash:8].js'
   },
   resolve: {
     extensions: [".js", ".jsx"]
@@ -21,23 +19,23 @@ module.exports = {
     rules: [{
       test: /\.js|jsx$/,
       loader: 'babel-loader',
-      exclude: /node_modules/,
-      options: {
-        presets: ['react-hmre']
-      }
+      exclude: /node_modules/
     }]
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('development')
+        NODE_ENV: JSON.stringify('production')
       }
     }),
+    new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.resolve(__dirname, 'server/router/template.ejs')
-    })
+      template: path.resolve(__dirname, 'server/router/template.ejs'),
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
+    }),
   ]
 }

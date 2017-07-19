@@ -1,15 +1,15 @@
 var router = require('minrouter')
 
-router.get('/', function(req, res) {
-  res.view('home', req)
+router.get('/', function(req, res, next) {
+  res.render('home', req)
 })
 
 router.get('/about', function(req, res) {
-  res.view('about', req)
+  res.render('about', req)
 })
 
 router.get('/topics-:id', function(req, res) {
-  res.view('topic', req)
+  res.render('topic', req)
 })
 
 module.exports = router

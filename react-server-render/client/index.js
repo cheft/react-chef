@@ -10,7 +10,7 @@ function render(content, req) {
   )
 }
 
-router.addResMethod('view', function (cname, req) {
+router.addResMethod('render', function (cname, req) {
   switch (cname) {
     case 'about':
       require.ensure([], function(require) {
@@ -34,7 +34,3 @@ router.addResMethod('view', function (cname, req) {
 })
 
 router()
-
-// if (module.hot) {
-//   module.hot.accept(() => { router() })
-// }

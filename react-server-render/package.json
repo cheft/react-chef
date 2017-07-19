@@ -5,7 +5,10 @@
   "main": "entry.js",
   "scripts": {
     "start": "npm run dev",
-    "dev": "node server",
+    "dev": "npm run devbuild && node server/development.js",
+    "prd": "node server/production.js",
+    "build": "rm -rf public && webpack --config webpack.prd.js",
+    "devbuild": "rm -rf public && webpack",
     "client": "webpack-dev-server --hot --history-api-fallback --open"
   },
   "author": "",
@@ -32,7 +35,10 @@
     "webpack-hot-middleware": "^2.18.2"
   },
   "dependencies": {
+    "html-webpack-plugin": "^2.29.0",
     "koa": "^2.3.0",
+    "koa-router": "^7.2.1",
+    "koa-serve-static": "^1.0.0",
     "minrouter": "^1.0.0-beta.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"

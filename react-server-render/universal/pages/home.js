@@ -20,7 +20,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Home</h1>
+        <h1>Home222</h1>
         <div style={{color: '#D2060C'}}>{this.state.time}</div>
         <HelloMessage name="cheft" />
       </div>
