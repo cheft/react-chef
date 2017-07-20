@@ -9,8 +9,20 @@ module.exports = {
     return manager.getDate()
   },
 
-  getInfo: async function() {
-    var result = await manager.getInfo()
-    return result
+  getInfo: async function(req) {
+    return await manager.getInfo()
+  },
+
+  testAsync: async function() {
+    const timeout = function (delay) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve()
+        }, delay)
+      })
+    }
+
+    await Promise.resolve(timeout(3000))
+    return 'hello'
   }
 }

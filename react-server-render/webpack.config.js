@@ -3,11 +3,13 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  devtool: 'eval-source-map',
   entry: {
     client: [
-      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=300',
-      // 'webpack-hot-middleware/client',
-      './client/index.js'
+      'babel-polyfill', // async/await
+      './client/index.js',
+      // 'webpack-hot-middleware/client'
+      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=300'
     ]
   },
   output: {

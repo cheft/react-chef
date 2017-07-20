@@ -1,4 +1,6 @@
 require('babel-core/register')
+require('babel-polyfill')
+
 const path = require('path')
 const Koa = require('koa')
 var staticCache = require('koa-static-cache')
@@ -11,9 +13,20 @@ app.use(staticCache(path.resolve(__dirname, '../public'), {
   gzip: true
 }))
 
+app.use(require('./controllers').routes())
 app.use(router)
 
-app.use(function(ctx) {
+// 测试
+app.use(async function(ctx) {
+  const timeout = function (delay) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve()
+        }, delay)
+      })
+    }
+
+  await Promise.resolve(timeout(3000))
   ctx.body = '404'
 })
 

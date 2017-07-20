@@ -6,8 +6,7 @@ router.get('/date', function(ctx) {
 })
 
 router.get('/data', async function(ctx) {
-  var result = await service.getInfo()
-  ctx.body = result
+  ctx.body = await service.getInfo()
 })
 
 module.exports = router

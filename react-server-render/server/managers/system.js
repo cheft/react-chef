@@ -14,7 +14,22 @@ module.exports = {
   },
 
   getInfo: async function() {
-    var result = await rp.get('http://www.baidu.com')
+    // var result = await rp('https://api.github.com/users/cheft', {
+    //   json: true,
+    //   headers: {'User-Agent': 'Awesome-Octocat-App'}
+    // })
+
+    const timeout = function (delay) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve()
+        }, delay)
+      })
+    }
+    var result = {
+      name: '早晨海风22222'
+    }
+    await Promise.resolve(timeout(500))
     return result
   }
 }

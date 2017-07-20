@@ -1,4 +1,5 @@
 require('babel-core/register')
+require('babel-polyfill')
 
 const Koa = require('koa')
 
@@ -32,19 +33,23 @@ var hotMiddlewareInstance = hotMiddleware(compiler, {
   heartbeat: 300
 })
 
-// process.env.NODE_ENV = 'development'
-// app.env = 'development'
-app.use(devMiddlewareInstance)
+// router 的顺序不能变，否则有问题
+app.use(require('./controllers').routes())
+
 app.use(hotMiddlewareInstance)
 
 // 解决 hotMiddleware 的修改了 type 的 bug
-app.use(function(ctx, next) {
+app.use(async function(ctx, next) {
   ctx.type = 'text/html; charset=utf-8';
-  next()
+  await next()
 })
 
 app.use(require('./router'))
-app.use(require('./controllers').routes())
+
+app.use(devMiddlewareInstance)
+
+// end router
+
 
 app.use(function(ctx) {
   ctx.body = '404'

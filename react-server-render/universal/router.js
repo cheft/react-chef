@@ -1,15 +1,15 @@
 var router = require('minrouter')
 
-router.get('/', function(req, res, next) {
-  return res.render('home', req)
+router.get('/', async function(req, res, next) {
+  await res.render('home', req)
 })
 
-router.get('/about', function(req, res) {
-  return res.render('about', req)
+router.get('/about', async function(req, res) {
+  await res.render('about', req)
 })
 
-router.get('/topics/:id', function(req, res) {
-  return res.render('topic', req)
+router.get('/topics/:id', async function(req, res) {
+  await res.render('topic', req)
 })
 
 module.exports = router
