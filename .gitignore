@@ -2,7 +2,7 @@
 node_modules
 */node_modules
 */.next
-yarn-error.log
-yarn.lock
-package-lock.json
+*/yarn-error.log
+*/yarn.lock
+*/package-lock.json
 public

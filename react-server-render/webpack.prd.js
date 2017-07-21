@@ -1,11 +1,12 @@
 var path = require('path')
 var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var BabiliPlugin = require("babili-webpack-plugin")
 
 module.exports = {
   entry: {
     client: [
-      'babel-polyfill', // async/await
+      'babel-polyfill', // 支持 async/await 的生成 regeneratorRuntime
       './client/index.js'
     ]
   },
@@ -31,6 +32,8 @@ module.exports = {
       }
     }),
     // new webpack.optimize.UglifyJsPlugin(),
+    // 因为 async 报错，用 BabiliPlugin 代替 UglifyJsPlugin
+    new BabiliPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'server/router/template.ejs'),
@@ -38,6 +41,6 @@ module.exports = {
         removeComments: true,
         collapseWhitespace: true
       }
-    }),
+    })
   ]
 }
