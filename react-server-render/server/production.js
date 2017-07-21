@@ -30,4 +30,6 @@ app.use(async function(ctx) {
   ctx.body = '404'
 })
 
-app.listen(8080)
+app.listen(8080, function () {
+  console.log('App started, at port %d, CTRL + C to terminate', '8080')
+})
