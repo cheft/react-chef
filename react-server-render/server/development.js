@@ -8,6 +8,7 @@ const chokidar = require('chokidar')
 const webpack = require('webpack')
 const KWM = require('koa-webpack-middleware')
 const config = require('../webpack.config.js')
+
 const compiler = webpack(config)
 
 var devMiddleware = KWM.devMiddleware
