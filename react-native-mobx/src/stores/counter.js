@@ -1,13 +1,8 @@
-import { observable, autorun, action, runInAction } from 'mobx';
+import { observable, action } from 'mobx';
+import axios from 'axios';
 
 export default class Counter {
   @observable count = 0;
-
-  constructor() {
-    autorun(() => {
-      console.log(this.count);
-    });
-  }
 
   @action.bound
   increment() {
@@ -23,15 +18,15 @@ export default class Counter {
   @action
   incrementAsync(num) {
     setTimeout(() => {
-      runInAction(() => {
-        this.count += num;
-      })
+      this.count += num;
     }, 1000);
   }
 
   @action
-  decrementAsync(num) {
-    console.log(num);
-    setTimeout(this.decrement, 1000);
+  async decrementAsync() {
+    console.log(this);
+    const result = await axios.get('http://www.baidu.com/');
+    console.log(result.data.length);
+    this.count += result.data.length;
   }
 }

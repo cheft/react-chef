@@ -3,10 +3,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { useStrict } from 'mobx';
 import CounterUI from './pages/counter';
-
-useStrict(true);
 
 export default function () {
   return (
