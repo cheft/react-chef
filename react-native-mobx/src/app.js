@@ -1,23 +1,22 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
-import CounterUI from './pages/counter';
+import { View, StatusBar } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import List from './pages/list';
+import Detail from './pages/detail';
+
+const AppNavigator = StackNavigator({
+  List: { screen: List },
+  Detail: { screen: Detail },
+});
 
 export default function () {
   return (
-    <View style={styles.container}>
-      <CounterUI />
+    <View style={{ flex: 1 }}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={'#202930'}
+      />
+      <AppNavigator />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
