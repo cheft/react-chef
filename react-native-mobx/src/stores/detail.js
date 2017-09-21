@@ -13,6 +13,5 @@ export default class DetailStore {
       this.detail = {};
     }
     this.detail = res.data.result;
-    console.log(this.detail, 222);
   }
 }
