@@ -1,53 +1,45 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
+import Swiper from 'react-native-swiper';
 import { observer } from 'mobx-react/native';
 
 import DetailStore from '../stores/detail';
-
-@observer
-export default class Profile extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: navigation.state.params.title,
-    headerStyle: {
-      backgroundColor: 'transparent',
-      position: 'absolute',
-      height: 50,
-      top: 0,
-      left: 0,
-      right: 0,
-    },
-  });
-
-  componentDidMount() {
-    const id = this.props.navigation.state.params.id;
-    this.store.loadDetail(id);
-  }
-
-  store = new DetailStore();
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{ uri: this.store.detail.livingRoomPictrue }}
-        />
-
-        <Text>{this.store.detail.title}</Text>
-      </View>
-    );
+var styles = {
+  wrapper: {
+  },
+  slide1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9DD6EB'
+  },
+  slide2: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#97CAE5'
+  },
+  slide3: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#92BBD9'
+  },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold'
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  image: {
-    height: 280,
-    width: '100%',
-  },
-});
+export default () => <Swiper style={styles.wrapper} showsButtons>
+  <View style={styles.slide1}>
+    <Text style={styles.text}>Hello Swiper</Text>
+  </View>
+  <View style={styles.slide2}>
+    <Text style={styles.text}>Beautiful</Text>
+  </View>
+  <View style={styles.slide3}>
+    <Text style={styles.text}>And simple</Text>
+  </View>
+</Swiper>

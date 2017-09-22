@@ -15,6 +15,8 @@ export default {
         debounce = 0;
       }, 1000);
     };
+    /* global requestAnimationFrame */
+    /* eslint no-undef: "error" */
     requestAnimationFrame(() => {
     // InteractionManager.runAfterInteractions(() => {
       func();

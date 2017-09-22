@@ -27,4 +27,15 @@ export default class ListStore {
     const list = await this.fetchList();
     this.list = this.list.concat(list);
   }
+
+  /* eslint class-methods-use-this: ["error", { "exceptMethods": ["onFetch"] }] */
+  async onFetch(page = 1, startFetch, abortFetch) {
+    const pageSize = 20;
+    const url = `${config.apiPrefix}/room/list?dataSource=SHENZHEN&bizType=SALE&currentPage=${page}&pageSize=${pageSize}`;
+    const res = await axios.get(url);
+    if (res.data.status !== 'C0000') {
+      abortFetch();
+    }
+    startFetch(res.data.result.list, pageSize);
+  }
 }
