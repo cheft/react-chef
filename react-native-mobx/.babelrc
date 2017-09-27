@@ -1,4 +1,15 @@
 {
-  "presets": ["react-native"],
-  "plugins": ["transform-decorators-legacy"]
+  "passPerPreset": true,
+  "presets": [
+    {
+      "plugins": ["transform-regenerator"]
+    },
+    {
+      "plugins": ["mobx-deep-action"]
+    },
+    {
+      "plugins": ["transform-decorators-legacy", "transform-class-properties"]
+    },
+    "react-native"
+  ]
 }
